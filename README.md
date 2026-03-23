@@ -9,7 +9,8 @@
 
 ## Current Progress
 - **March 2026**  
-  - Day 1: Python data types (lists, strings, tuples, dicts, sets) 
+  - Day 1: Python data types (lists, strings, tuples, dicts, sets)
+  - Day 2: Python functions and methods(built-in and user defined)
 
 ## Skills Building
 - Python 
@@ -18,10 +19,6 @@
 - Power BI  
 - Data Visualization (Matplotlib/Seaborn)
 
-## How to Navigate
-- `/python/` → All Python practice & notebooks  
-- `/sql/` → SQL queries & problems  
-- More folders coming as I learn!
 
 Open to feedback, suggestions, or connections!  
 LinkedIn: [https://www.linkedin.com/in/divya-rana-a4634833b/]  
