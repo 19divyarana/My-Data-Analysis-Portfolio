@@ -5,12 +5,12 @@
 ## About Me
 - Currently learning: Python basics → visualization → Pandas → SQL joins → Power BI dashboards
 - Goal: Daily practice + mini-projects → strong portfolio
-- Sharing progress daily on LinkedIn too!
 
 ## Current Progress
 - **March 2026**  
   - Day 1: Python data types (lists, strings, tuples, dicts, sets)
   - Day 2: Python functions and methods(built-in and user defined)
+  - Day 3: Python libraries(numpy.pandas)
 
 ## Skills Building
 - Python 
