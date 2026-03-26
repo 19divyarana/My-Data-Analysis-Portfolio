@@ -10,7 +10,7 @@
 - **March 2026**  
   - Day 1: Python data types (lists, strings, tuples, dicts, sets)
   - Day 2: Python functions and methods(built-in and user defined)
-  - Day 3: Python libraries(numpy.pandas)
+  - Day 3: Python libraries(numpy)
 
 ## Skills Building
 - Python 
