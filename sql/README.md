@@ -13,6 +13,7 @@ The focus is on writing efficient queries, understanding database concepts, and 
  SQL Joins
 
 1.INNER JOIN
+2.LEFT JOIN & RIGHT JOIN
 
 
 
