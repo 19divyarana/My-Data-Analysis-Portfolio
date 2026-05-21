@@ -14,6 +14,7 @@ The focus is on writing efficient queries, understanding database concepts, and 
 
 1.INNER JOIN
 2.LEFT JOIN & RIGHT JOIN
+3.UNION,SELF JOIN (MYSQL DOESNT SUPPORT FULL OUTER JOIN)
 
 
 
