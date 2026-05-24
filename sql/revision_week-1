@@ -1,0 +1,133 @@
+#1.Find the total revenue generated each month.
+SELECT 
+    DATE_TRUNC('month', order_date) AS month,
+    SUM(amount) AS total_revenue
+FROM Orders
+GROUP BY month
+ORDER BY month;
+
+#2.Average Order Value for Each Customer
+SELECT 
+    customer_id,
+    AVG(amount) AS avg_order_value
+FROM Orders
+GROUP BY customer_id;
+
+#3.Top 5 Customers by Total Spending
+SELECT 
+    customer_id,
+    SUM(amount) AS total_spent
+FROM Orders
+GROUP BY customer_id
+ORDER BY total_spent DESC
+LIMIT 5;
+
+#4.Daily Active Users
+SELECT 
+    login_date,
+    COUNT(DISTINCT user_id) AS active_users
+FROM Logins
+GROUP BY login_date
+ORDER BY login_date;
+
+#5.Repeat Customers (>3 Purchases)
+SELECT 
+    customer_id,
+    COUNT(order_id) AS total_orders
+FROM Orders
+GROUP BY customer_id
+HAVING COUNT(order_id) > 3;
+
+#6. Calculate conversion rate from visitors to buyers. Tables: Visitors(visitor_id), Orders(customer_id)
+SELECT 
+    ROUND(
+        COUNT(DISTINCT customer_id) * 100.0 /
+        (SELECT COUNT(DISTINCT visitor_id) FROM Visitors),
+        2
+    ) AS conversion_rate
+FROM Orders;
+
+#7.Category Contribution to Sales
+SELECT 
+    category,
+    SUM(sales) AS category_sales,
+    ROUND(
+        SUM(sales) * 100.0 /
+        (SELECT SUM(sales) FROM Products),
+        2
+    ) AS contribution_percent
+FROM Products
+GROUP BY category;
+
+#8.Average Delivery Time Per Region
+SELECT 
+    region,
+    AVG(delivery_date - order_date) AS avg_delivery_days
+FROM Orders
+GROUP BY region;
+
+#9.Employees Above Department Average Salary
+SELECT 
+    emp_id,
+    dept_id,
+    salary
+FROM Employees e
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM Employees
+    WHERE dept_id = e.dept_id
+);
+
+#10.Total Salary Department-wise
+SELECT 
+    d.dept_name,
+    SUM(e.salary) AS total_salary
+FROM Employees e
+JOIN Departments d
+ON e.dept_id = d.dept_id
+GROUP BY d.dept_name;
+
+#11.Customers Who Never Ordered
+SELECT 
+    c.customer_id,
+    c.customer_name
+FROM Customers c
+LEFT JOIN Orders o
+ON c.customer_id = o.customer_id
+WHERE o.order_id IS NULL;
+
+#12.Products Never Sold
+SELECT 
+    p.product_id,
+    p.product_name
+FROM Products p
+LEFT JOIN Order_Items oi
+ON p.product_id = oi.product_id
+WHERE oi.product_id IS NULL;
+
+#13.Departments with more than 10 employees
+SELECT dept_id,
+       COUNT(emp_id) AS emp_count
+FROM Employees
+GROUP BY dept_id
+HAVING COUNT(emp_id) > 10;
+
+#14.Customer with highest number of orders
+SELECT customer_id,
+       COUNT(order_id) AS order_count
+FROM Orders
+GROUP BY customer_id
+ORDER BY order_count DESC
+LIMIT 1;
+
+#15.Average product price by category
+SELECT category,
+       ROUND(AVG(price), 2) AS avg_price
+FROM Products
+GROUP BY category;
+
+
+
+
+
+
