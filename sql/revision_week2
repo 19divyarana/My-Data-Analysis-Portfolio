@@ -1,0 +1,74 @@
+#1. Customers who placed more than 5 orders
+SELECT customer_id, COUNT(order_id) AS total_orders
+FROM Orders
+GROUP BY customer_id
+HAVING COUNT(order_id) > 5;
+
+
+#2: Orders where amount > 500
+SELECT *
+FROM Orders
+WHERE amount > 500;
+
+#3: Customers whose total spending > 2000
+SELECT customer_id, SUM(amount) AS total_spent
+FROM Orders
+GROUP BY customer_id
+HAVING SUM(amount) > 2000;
+
+#4.Countries having more than 10 customers
+SELECT country, COUNT(customer_id) AS total_customers
+FROM Customers
+GROUP BY country
+HAVING COUNT(customer_id) > 10;
+
+#5.Orders after 2023 AND total orders > 3
+SELECT customer_id, COUNT(order_id) AS total_orders
+FROM Orders
+WHERE order_date > '2023-12-31'
+GROUP BY customer_id
+HAVING COUNT(order_id) > 3;
+
+#6. Orders for a specific customer
+SELECT order_id, order_date, amount
+FROM Orders
+WHERE customer_id = 101;
+
+#7.Orders between dates
+SELECT order_id, customer_id, amount
+FROM Orders
+WHERE order_date BETWEEN '2024-01-01' AND '2024-01-31';
+
+#8.LOWER(name) problem
+SELECT *
+FROM Customers
+WHERE LOWER(name) = 'john';
+
+#9.SELECT * vs specific columns
+SELECT order_id, amount FROM Orders;
+
+#Why? Reads fewer columns ,Less memory + faster I/O , Uses covering index (sometimes)
+
+/*10.Most recent order per customer
+Method one: */
+SELECT o.*
+FROM Orders o
+WHERE order_date = (
+    SELECT MAX(order_date)
+    FROM Orders o2
+    WHERE o.customer_id = o2.customer_id
+);
+
+#method2:
+SELECT *
+FROM (
+    SELECT 
+        order_id,
+        customer_id,
+        order_date,
+        ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY order_date DESC) AS rn
+    FROM Orders
+) t
+WHERE rn = 1;
+
+
