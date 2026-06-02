@@ -15,10 +15,21 @@ The focus is on writing efficient queries, understanding database concepts, and 
 1.INNER JOIN
 2.LEFT JOIN & RIGHT JOIN
 3.UNION,SELF JOIN (MYSQL DOESNT SUPPORT FULL OUTER JOIN)
+4.full outer join
 
+ SQL subqueries
+ 
+1.Scalar subquery
+2.Table subquery
+3.Correlated subquery
 
+ Window Function
+1. ranking function
+2. Aggregate window function
 
+ CTEs
 
+ Business metrics
 
 Learning Goals
 
